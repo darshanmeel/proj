@@ -6,6 +6,14 @@ Created on Fri Jul 03 22:35:02 2015
 """
 import numpy as np
 import math
+import os,sys,inspect
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+print parentdir
+moduledir = parentdir + '\common'
+print moduledir
+sys.path.insert(0,moduledir) 
+
 from active_functions import *
 from loss_functions import *
 
@@ -132,7 +140,7 @@ class NN_single_hidden_layer:
         #shuffle train data
         
         random_indexes = np.arange(N)
-        #np.random.shuffle(random_indexes)
+        np.random.shuffle(random_indexes)
 
         train_data = train_data[random_indexes]
         train_class = train_class[random_indexes]
